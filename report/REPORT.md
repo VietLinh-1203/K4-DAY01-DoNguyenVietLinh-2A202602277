@@ -1,6 +1,6 @@
 # Báo cáo bài thực hành Ngày 1 – Đọc nhãn từ đầu ra YOLO11
 
-**Ngày chạy:**
+**Ngày chạy:** 11/09/2026
 
 **Runtime Colab:** CPU/GPU
 
@@ -53,23 +53,23 @@ Nguồn evidence: `segmentation_predictions.json` và `visuals/segmentation_pred
 
 | Tác vụ | Đơn vị/định dạng ground truth | Lỗi hoặc điểm mơ hồ quan sát được | Annotator làm gì? | Reviewer xem gì? |
 | --- | --- | --- | --- | --- |
-| Phân loại ảnh |  |  |  |  |
-| Phát hiện vật thể |  |  |  |  |
-| Instance segmentation |  |  |  |  |
+| Phân loại ảnh | class_id, class_name, taxomony | nhiều chủ thể, nhãn mơ hồ | chọn nhãn theo guideline | đúng lớp, taxonomy |
+| Phát hiện vật thể | object: class, score, bounding box | box lệch, object nhỏ/bị cắt/che | vẽ box sát phần nhìn thấy | đủ object, đúng lớp, box đúng |
+| Instance segmentation | instance: class, instance_id, polygon | biên mờ, vật thể chạm/che nhau | Tô theo biên nhìn thấy | mask sát biên, tách đúng từng instance |
 
 ## 5. An toàn dữ liệu
 
-- Một quy tắc bảo vệ dữ liệu:
-- Nếu thấy ảnh hoặc dữ liệu không đúng phạm vi, tôi sẽ dừng và báo cho:
+- Một quy tắc bảo vệ dữ liệu: Không để lộ họ tên, MSSV hoặc dữ liệu cá nhân trong báo cáo, output hay file ZIP.
+- Nếu thấy ảnh hoặc dữ liệu không đúng phạm vi, tôi sẽ dừng và báo cho: Lab Coach
 
 ## 6. Danh sách bằng chứng
 
-- [ ] `classification_predictions.json`
-- [ ] `detection_predictions.json`
-- [ ] `segmentation_predictions.json`
-- [ ] `IMAGE_ATTRIBUTION.md`
-- [ ] `visuals/classification_top5.png`
-- [ ] `visuals/detection_predictions.png`
-- [ ] `visuals/segmentation_prediction.png`
-- [ ] Ô validation cuối notebook báo `PASS`.
-- [ ] Không có họ tên, MSSV hoặc dữ liệu nhạy cảm trong báo cáo/output.
+- [x] `classification_predictions.json`
+- [x] `detection_predictions.json`
+- [x] `segmentation_predictions.json`
+- [x] `IMAGE_ATTRIBUTION.md`
+- [x] `visuals/classification_top5.png`
+- [x] `visuals/detection_predictions.png`
+- [x] `visuals/segmentation_prediction.png`
+- [x] Ô validation cuối notebook báo `PASS`.
+- [x] Không có họ tên, MSSV hoặc dữ liệu nhạy cảm trong báo cáo/output.
