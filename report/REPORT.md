@@ -19,12 +19,12 @@
 
 Nguồn evidence: `classification_predictions.json`, sample `traffic`.
 
-- Record hạng 1 (`class_id`, `class_name`, `rank`, `score`, `taxonomy_name`):
-- Record này mô tả toàn ảnh như thế nào?
+- Record hạng 1 (`class_id`, `class_name`, `rank`, `score`, `taxonomy_name`): 468, "cab", 1, 0.510915, "ImageNet-1K".
+- Record này mô tả toàn ảnh như thế nào? Record này cho biết mô hình nhận diện toàn bộ ảnh có khả năng cao nhất là lớp "cab".
 - Ai định nghĩa class list mà checkpoint có thể dự đoán?
-- Vì sao cần giữ cả ID, tên lớp và tên taxonomy?
-- Nếu ảnh có nhiều chủ thể, guideline cần quy định điều gì?
-- Vì sao model score không phải ground truth?
+- Vì sao cần giữ cả ID, tên lớp và tên taxonomy? Giữ cả 3 vì chúng phục vụ cho những việc khác nhau: ID là định danh duy nhất, tên lớp là nhãn dễ đọc với người dùng, tên taxonomy cho biết lớp ấy nằm ở hệ phân loại nào.
+- Nếu ảnh có nhiều chủ thể, guideline cần quy định điều gì? Guideline phải nêu rõ gán nhãn cho ai, theo tiêu chí nào, ưu tiên ra sao và xử lý các trường hợp mơ hồ thế nào.
+- Vì sao model score không phải ground truth? Model score chỉ phản ánh kết quả tính toán của checkpoint. Ground truth phải do con người xác nhận dựa trên taxonomy và guideline của dự án.
 
 ## 2. Phát hiện vật thể – lớp và box cho từng object
 
