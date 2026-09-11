@@ -30,12 +30,12 @@ Nguồn evidence: `classification_predictions.json`, sample `traffic`.
 
 Nguồn evidence: `detection_predictions.json` và `visuals/detection_predictions.png`, sample `kitchen`.
 
-- Một record (`class_name`, `score`, `bbox_xyxy`, `bbox_width`, `bbox_height`):
-- Diễn giải vị trí box bằng lời:
-- So sánh số prediction ở hai threshold:
-- Điều gì thay đổi đối với độ bao phủ và khối lượng reviewer cần xem?
-- Đề xuất một quy tắc box chặt:
-- Với object bị che khuất/cắt mép, điều gì cần guideline hoặc escalation quyết định?
+- Một record (`class_name`, `score`, `bbox_xyxy`, `bbox_width`, `bbox_height`): "person", 0.769676, [0.08, 256.79, 18.39, 313.12], 18.32, 56.33.
+- Diễn giải vị trí box bằng lời: Record này phát hiện người với độ tin cậy 76,9%. Phát hiện một phần người ở sát góc trái, nửa dưới ảnh; box rất hẹp nên chỉ bao phủ phần cơ thể bị khuất.
+- So sánh số prediction ở hai threshold: Threshold thấp tăng bao phủ nhưng tăng review; threshold cao giảm review nhưng có thể bỏ sót.  
+- Điều gì thay đổi đối với độ bao phủ và khối lượng reviewer cần xem? 
+- Đề xuất một quy tắc box chặt: Chỉ giữ box rõ, ôm sát phần nhìn thấy và đủ score.
+- Với object bị che khuất/cắt mép, điều gì cần guideline hoặc escalation quyết định? Object bị che/cắt mép, guideline cần quyết định có cần gắn nhãn phần nhìn thấy không, mức độ nhìn thấy tối thiểu và khi nào cần escalation.
 
 ## 3. Phân đoạn theo từng đối tượng – polygon cho mỗi instance
 
