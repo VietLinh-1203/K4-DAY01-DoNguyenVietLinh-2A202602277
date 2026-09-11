@@ -32,8 +32,8 @@ Nguồn evidence: `detection_predictions.json` và `visuals/detection_prediction
 
 - Một record (`class_name`, `score`, `bbox_xyxy`, `bbox_width`, `bbox_height`): "person", 0.769676, [0.08, 256.79, 18.39, 313.12], 18.32, 56.33.
 - Diễn giải vị trí box bằng lời: Record này phát hiện người với độ tin cậy 76,9%. Phát hiện một phần người ở sát góc trái, nửa dưới ảnh; box rất hẹp nên chỉ bao phủ phần cơ thể bị khuất.
-- So sánh số prediction ở hai threshold: Threshold thấp tăng bao phủ nhưng tăng review; threshold cao giảm review nhưng có thể bỏ sót.  
-- Điều gì thay đổi đối với độ bao phủ và khối lượng reviewer cần xem? 
+- So sánh số prediction ở hai threshold: Threshold 0.20 có 17 vật thể, threshold 0.35 có 11 vật thể. Suy ra ngưỡng càng cao, chỉ giữ các dự đoán tự tin hơn nên số vật thể phát hiện được giảm.
+- Điều gì thay đổi đối với độ bao phủ và khối lượng reviewer cần xem? Threshold thấp tăng bao phủ nhưng tăng review; threshold cao giảm review nhưng có thể bỏ sót.
 - Đề xuất một quy tắc box chặt: Chỉ giữ box rõ, ôm sát phần nhìn thấy và đủ score.
 - Với object bị che khuất/cắt mép, điều gì cần guideline hoặc escalation quyết định? Object bị che/cắt mép, guideline cần quyết định có cần gắn nhãn phần nhìn thấy không, mức độ nhìn thấy tối thiểu và khi nào cần escalation.
 
@@ -41,11 +41,11 @@ Nguồn evidence: `detection_predictions.json` và `visuals/detection_prediction
 
 Nguồn evidence: `segmentation_predictions.json` và `visuals/segmentation_prediction.png`, sample `kitchen`.
 
-- Một record (`instance_id`, `class_name`, `score`, số điểm và một phần `polygon_xy`):
-- Polygon bổ sung chi tiết gì so với box?
-- `instance_id` dùng để làm gì và không phải loại ID nào?
-- Đề xuất một quy tắc biên mask:
-- Với vùng mờ/tiếp xúc/che khuất, điều gì cần guideline hoặc escalation quyết định?
+- Một record (`instance_id`, `class_name`, `score`, số điểm và một phần `polygon_xy`): "traffic-001", "bus", 0.925745, [148.0, 189.0].
+- Polygon bổ sung chi tiết gì so với box? Polygon mô tả đường viền chính xác của vật thể, box chỉ là khung chữ nhật bao quanh.
+- `instance_id` dùng để làm gì và không phải loại ID nào? instance_id phân biệt từng cá thể cùng lớp; không phải class_id hay ID của taxonomy.
+- Đề xuất một quy tắc biên mask: Chỉ tô phần vật thể nhìn thấy, bám sát biên rõ ràng.
+- Với vùng mờ/tiếp xúc/che khuất, điều gì cần guideline hoặc escalation quyết định? Cần guideline xác định ranh giới, phần nào được tô và khi nào cần escalation.
 
 ## 4. Vòng đời và kiểm tra chất lượng
 
